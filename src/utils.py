@@ -1,9 +1,9 @@
 import jwt
-from fastapi import HTTPException
-from config import JWT_SECRET
+from fastapi import Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
+from src.config import JWT_SECRET
 
 ALGORITHM = "HS256"
-
 
 def verify_token(token: str):
     try:
