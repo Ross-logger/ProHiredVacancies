@@ -4,7 +4,7 @@ import jwt
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-from src.config import JWT_SECRET
+from config import JWT_SECRET
 from src.main import app
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from src.database.database import get_async_session, Base

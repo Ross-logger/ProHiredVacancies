@@ -4,7 +4,7 @@ from src.database.database import create_db_and_tables, get_async_session
 from contextlib import asynccontextmanager
 from src.database import crud
 from src import utils, schemas
-from src.config import HOST, PORT
+from config import HOST, PORT
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
