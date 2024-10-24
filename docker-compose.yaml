@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: ${TEST_DB_NAME}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    platform: linux/amd64
+#    platform: linux/amd64
     ports:
       - "5434:5432"
     env_file:
@@ -23,7 +23,7 @@ services:
     container_name: vacancies_service
     build:
       context: .
-    platform: linux/amd64
+#    platform: linux/amd64
     ports:
       - "8005:8005"
     command: uvicorn src.main:app --host 0.0.0.0 --port 8005
