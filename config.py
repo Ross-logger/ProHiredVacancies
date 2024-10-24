@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 HOST = os.getenv("HOST") or "localhost"
-PORT = os.getenv("PORT") or "2005"
+PORT = os.getenv("PORT") or "8005"
 
 DB_HOST = os.environ.get("DB_HOST")
 DB_PORT = os.environ.get("DB_PORT")

@@ -1,0 +1,38 @@
+image: docker:latest
+
+services:
+  - docker:dind  # Docker-in-Docker to run containers in the CI environment
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - build
+  - test
+
+before_script:
+  - echo "Copying environment file..."
+  - cp "$ENV_FILE" .env
+
+# Build stage
+build:
+  stage: build
+  script:
+    - echo "Building Docker containers..."
+    - docker-compose build  # Build the Docker containers
+  only:
+    - branches
+
+# Test stage
+test:
+  stage: test
+  script:
+    - echo "Starting Docker containers..."
+    - docker-compose up -d
+    - echo "Running tests with pytest..."
+    - docker-compose run vacancies_service pytest  # Run tests inside the vacancies_service container
+    - echo "Shutting down Docker containers..."
+    - docker-compose down  # Tear down the containers after tests
+  only:
+    - branches
