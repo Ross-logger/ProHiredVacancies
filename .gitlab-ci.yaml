@@ -15,7 +15,6 @@ before_script:
   - echo "Copying environment file..."
   - cp "$ENV_FILE" .env
 
-# Build stage
 build:
   stage: build
   script:
@@ -24,7 +23,6 @@ build:
   only:
     - branches
 
-# Test stage
 test:
   stage: test
   script:
